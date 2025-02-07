@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark: #101522;
+  --blue: #0000cc;
+  --darkblue: #0000ad;
+  --box-shadow: 0 0 0.25rem black;
+  --header-height: 80px;
+  --section-height: calc(100vh - var(--header-height));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--dark);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overscroll-behavior: none;
+}
+
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .header {
+    @apply sticky top-0 flex justify-between items-center bg-dark shadow shadow-black px-8 h-header;
+  }
+  .mobileNav {
+    @apply flex-col text-center w-full h-section bg-dark absolute left-0 top-header-height pt-5;
+  }
+  .pageSection {
+    @apply flex flex-col justify-center items-center gap-8 p-8 lg:h-section lg:flex-row lg:even:flex-row-reverse lg:justify-around;
+  }
+  .btn {
+    @apply bg-blue px-16 py-3 rounded w-full duration-200 ease-linear lg:w-auto;
+  }
+  .btn:hover {
+    @apply bg-darkblue;
+  }
+}
